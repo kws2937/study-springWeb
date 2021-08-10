@@ -37,4 +37,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		updateDate = sysdate
 		where bno = #{bno}
 	</update>
+	
+	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+		select bno, title, content, writer, regdate, updateDate
+		from (
+				select /*+ INDEX_DESC(tbl_board pk_board) */
+					rownum rn, bno, title, content, writer, regdate, updateDate
+				from
+					tbl_board
+				where rownum <![CDATA[ <= ]]> #{pageNum} * #{amount}
+		)
+		where rn <![CDATA[ > ]]> (#{pageNum}-1) * #{amount}
+	</select>
 </mapper>

@@ -38,10 +38,10 @@ public class BoardServiceTests {
 		log.info("게시물 번호 : " + board.getBno());
 	}
 	
-	@Test
-	public void testGetList() {
-		service.getList().forEach(board -> log.info(board));
-	}
+//	@Test
+//	public void testGetList() {
+//		service.getList().forEach(board -> log.info(board));
+//	}
 	
 	@Test
 	public void testGet() {

@@ -14,13 +14,13 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Board Register
+                            Board Modify
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         <form role="form" action="/board/modify" method="post">
                            	<div class="form-group">
-                           		<label>bno</label> <input class="form-control" name="title" value="${board.bno}" readonly>
+                           		<label>bno</label> <input class="form-control" name="bno" value="${board.bno}" readonly>
                            	</div>
                            	<div class="form-group">
                            		<label>Title</label> <input class="form-control" name="title" value="${board.title}" >
@@ -41,7 +41,7 @@
                            	</div>
                            	
                       		<button type='submit' data-oper='modify' class='btn btn-default' onclick="location.href='/board/modify?bno=${board.bno}'">Modify</button>
-                      		<button type='submit' data-oper='remove' class='btn btn-default' onclick="location.href='/board/modify?bno=${board.bno}'">Modify</button>
+                      		<button type='submit' data-oper='remove' class='btn btn-default' onclick="location.href='/board/modify?bno=${board.bno}'">Remove</button>
                       		<button data-oper='list' class='btn btn-default' onclick="location.href='/board/list'">list</button>
                         </form>
                         
