@@ -32,8 +32,14 @@
                            	</div>
                            	
                            	<div>
-                           		<button data-oper='modify' class='btn btn-default' onclick="location.href='/board/modify?bno=${board.bno}'">Modify</button>
-                           		<button data-oper='list' class='btn btn-default' onclick="location.href='/board/list'">list</button>
+                           		<button data-oper='modify' class='btn btn-default'>Modify</button>
+                           		<button data-oper='list' class='btn btn-default'>list</button>
+                           		
+					            <form id="operForm" action="/board/modify" method="get">
+					            	<input type="hidden" id="bno" name="bno" value="${board.bno}" />
+					            	<input type="hidden" name="pageNum" value="${cri.pageNum}" />
+					            	<input type="hidden" name="amount" value="${cri.amount}" />
+					            </form>
                            	</div>
                            	
                         </div>
@@ -44,5 +50,22 @@
                 <!-- end panel-body -->
             </div>
            <!-- ./row -->
+           
+           <script type="text/javascript">
+	           $(document).ready(function() {
+	        	   var operForm = $('#operForm');
+	        	   
+	        	   $('button[data-oper="modify"]').on('click', function(e) {
+	        		   operForm.attr('action', '/board/modify').submit();
+	        	   });
+	        	   
+	        	   $('button[data-oper="list"]').on('click', function(e) {
+	        		   operForm.find('#bno').remove();
+	        		   operForm.attr('action', '/board/list');
+	        		   operForm.submit();
+	        	   });
+	           });
+           </script>
+           
         
         <%@include file="../includes/footer.jsp"%>

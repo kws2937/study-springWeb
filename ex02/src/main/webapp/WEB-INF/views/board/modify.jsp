@@ -62,13 +62,13 @@
 					$(button).on('click', function(e) {
 						e.preventDefault();
 						
-						var oper = $(this).data();
+						var oper = $(this).data('oper');
 						
 						if(oper === 'remove') {
 							formObj.attr('action', '/board/remove');
 						} else if(oper === 'list') {
-							self.location = '/board/list';
-							return;
+							formObj.attr('action', '/board/list').attr('method', 'get');
+							formObj.empty();
 						}
 						formObj.submit();
 					});
