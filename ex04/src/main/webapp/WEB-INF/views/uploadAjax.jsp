@@ -11,12 +11,30 @@
 	<div class="uploadDiv">
 		<input type="file" name="uploadFile" multiple>
 	</div>
+	
+	<div class='uploadResult'>
+		<ul>
+		
+		</ul>
+	</div>
 	<button id="uploadBtn">Upload</button>
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script>
-		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-		,	maxSize = 5242880;
+		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$")
+		,	maxSize = 5242880
+		,	clone = $('.uploadDiv').clone()
+		,	uploadResult = $('.uploadResult ul');
+		
+		function showUploadedFile(uploadResultArr) {
+			var str = '';
+			
+			$(uploadResultArr).each(function(i, obj) {
+				str += '<li>' + obj.fileName + '</li>';
+			});
+			
+			uploadResult.append(str);
+		}
 		
 		function checkExtension(fileName, fileSize) {
 			if(fileSize >= maxSize) {
@@ -53,8 +71,13 @@
 				contentType : false,
 				data : formData,
 				type : 'POST',
+				dataType : 'json',
 				success : function(result) {
-					alert('uploadFile!!!');
+					console.log(result);
+					
+					showUploadResult(result);
+					
+					$('.uploadDiv').html(cloneObj.html());
 				}
 			})
 		});
