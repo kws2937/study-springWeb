@@ -24,7 +24,7 @@
   </div>
   <div>
   <div>
-    <input type='checkbox' name='remember-me'> Remember Me
+    <input type='checkbox' name='remember-me'> Remember Me <!-- 자동로그인.. -->
   </div>
 
   <div>

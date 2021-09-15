@@ -14,13 +14,13 @@
 <h1>/sample/all page</h1>
 
 
-<sec:authorize access="isAnonymous()">
+<sec:authorize access="isAnonymous()"> <!-- 누구나 -->
 
   <a href="/customLogin">로그인</a>
 
 </sec:authorize>
 
-<sec:authorize access="isAuthenticated()">
+<sec:authorize access="isAuthenticated()"> <!-- 인증된 사용자만 -->
 
   <a href="/customLogout">로그아웃</a>
 
